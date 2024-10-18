@@ -16,7 +16,13 @@ def index(request):
 # @login_required
 @require_http_methods(['GET','POST'])
 def create(request):
-    if request.mothod == 'GET':
+    if request.method == 'POST':
+        form = BoardForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('boards:index')
+
+    elif request.method == 'GET':
         form = BoardForm()
     context = {
         'form' : form
