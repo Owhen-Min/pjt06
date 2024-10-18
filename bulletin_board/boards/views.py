@@ -28,3 +28,8 @@ def create(request):
         'form' : form
     }
     return render(request, 'boards/create.html', context)
+
+@require_http_methods(['GET', 'POST'])
+def detail(request, pk):
+    if request.method == 'POST':
+        
