@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
+from .models import Board, Comment
 # Create your views here.
 
 @require_http_methods(['GET'])
