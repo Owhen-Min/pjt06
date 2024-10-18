@@ -10,7 +10,7 @@ class Board(models.Model):
 
 class Comment(models.Model):
     # author
-    board = models.ForeignKey(Board, on_delete=models.CASCADE)
+    board = models.ForeignKey(Board, on_delete=models.CASCADE, related_name='comments')
     content = models.TextField()
     created_at = models.DateField(auto_now=True)
     updated_at = models.DateField(auto_now_add=True)
