@@ -22,3 +22,18 @@ def create(request):
         'form' : form
     }
     return render(request, 'boards/create.html', context)
+
+
+@require_http_methods(['POST'])
+def create_comment(request, board_pk):
+    board = get_object_or_404(board, board_pk)
+    comment = CommentForm(request.POST)
+    if comment.is_valid():
+        comment.save(commit=False)
+        comment.board = board
+        comment.save()
+        return redirect('boards:detail', board_pk)
+    
+    
+
+    
